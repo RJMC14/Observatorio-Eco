@@ -1,1 +1,777 @@
-pbpaste > index.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observatorio sobre Estudios de la Economía Popular en México | CIEP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'navy':  { 900: '#0f1f42', 800: '#1a2f5e', 700: '#1e3a8a' },
+            'eco':   { 600: '#0d9488', 500: '#14b8a6', 400: '#2dd4bf' },
+            'gold':  { 700: '#b45309', 600: '#d97706', 400: '#fbbf24' },
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    .hero-bg { background: linear-gradient(135deg, #0f1f42 0%, #1a2f5e 45%, #0f766e 100%); }
+    .card-rise { transition: transform .22s ease, box-shadow .22s ease; }
+    .card-rise:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(0,0,0,.13); }
+    .divider { height: 2px; background: linear-gradient(90deg, transparent, #14b8a6, transparent); }
+    .glass { background: rgba(255,255,255,.08); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.15); }
+    .nav-active { color: #14b8a6 !important; font-weight: 700; }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 antialiased">
+
+<!-- ═══════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════ -->
+<nav class="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+
+    <!-- Brand -->
+    <a href="#inicio" class="flex items-center gap-3 shrink-0">
+      <div class="w-9 h-9 rounded-lg bg-navy-900 flex items-center justify-center">
+        <span class="text-eco-400 font-black text-sm tracking-tight">OE</span>
+      </div>
+      <div class="leading-tight">
+        <p class="font-extrabold text-navy-900 text-sm">Observatorio Eco</p>
+        <p class="text-[10px] text-gray-400 font-medium tracking-wide uppercase">CIEP · Economía Popular</p>
+      </div>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-7">
+      <a href="#inicio"       class="text-gray-600 hover:text-eco-600 font-medium text-sm transition-colors">Inicio</a>
+      <a href="#metodologia"  class="text-gray-600 hover:text-eco-600 font-medium text-sm transition-colors">Metodología</a>
+      <a href="#publicaciones" class="text-gray-600 hover:text-eco-600 font-medium text-sm transition-colors">Publicaciones</a>
+      <a href="#congresos"    class="text-gray-600 hover:text-eco-600 font-medium text-sm transition-colors">Congresos</a>
+      <a href="#contacto" class="ml-2 inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors">
+        <i class="fas fa-envelope text-xs"></i> Contacto
+      </a>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="menuBtn" class="md:hidden text-gray-600 focus:outline-none">
+      <i class="fas fa-bars text-lg"></i>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pb-5 pt-3 space-y-1">
+    <a href="#inicio"        class="block py-2.5 text-gray-700 font-medium text-sm border-b border-gray-50">Inicio</a>
+    <a href="#metodologia"   class="block py-2.5 text-gray-700 font-medium text-sm border-b border-gray-50">Metodología</a>
+    <a href="#publicaciones" class="block py-2.5 text-gray-700 font-medium text-sm border-b border-gray-50">Publicaciones</a>
+    <a href="#congresos"     class="block py-2.5 text-gray-700 font-medium text-sm border-b border-gray-50">Congresos</a>
+    <a href="#contacto"      class="block py-2.5 text-eco-600 font-semibold text-sm">Contacto</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════
+     HERO · INICIO
+═══════════════════════════════════════════════ -->
+<section id="inicio" class="hero-bg min-h-screen flex flex-col justify-center pt-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+      <!-- Left: headline + CTA -->
+      <div class="text-white">
+        <span class="inline-flex items-center gap-2 bg-eco-500/20 text-eco-300 text-xs font-bold px-3 py-1.5 rounded-full mb-5 tracking-widest uppercase">
+          <i class="fas fa-circle text-[6px] text-eco-400"></i>
+          Centro de Investigación en Economía Popular · CIEP
+        </span>
+
+        <h1 class="text-4xl lg:text-[2.75rem] font-black leading-tight mb-6">
+          Observatorio sobre Estudios de la
+          <span class="text-eco-400"> Economía Popular</span>
+          en México
+        </h1>
+
+        <p class="text-gray-300 text-lg leading-relaxed mb-9 max-w-lg">
+          Espacio académico dedicado al análisis, investigación y difusión rigurosa de los
+          fenómenos que configuran las economías populares en el territorio mexicano.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="#publicaciones" class="inline-flex items-center gap-2 bg-eco-500 hover:bg-eco-400 text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg shadow-eco-600/30">
+            <i class="fas fa-book-open"></i> Ver Publicaciones
+          </a>
+          <a href="#metodologia" class="inline-flex items-center gap-2 border border-white/40 hover:bg-white/10 text-white font-semibold px-6 py-3 rounded-xl transition-colors">
+            <i class="fas fa-microscope"></i> Nuestra Metodología
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: mission/vision/purpose cards -->
+      <div class="space-y-4">
+
+        <div class="glass rounded-2xl p-5 flex gap-4 items-start">
+          <div class="w-11 h-11 bg-eco-500 rounded-xl flex items-center justify-center shrink-0">
+            <i class="fas fa-bullseye text-white"></i>
+          </div>
+          <div>
+            <h3 class="text-white font-bold text-base mb-1">Misión</h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              Generar conocimiento riguroso y accesible sobre la economía popular en México,
+              articulando perspectivas teóricas y empíricas para comprender sus dinámicas,
+              actores y transformaciones históricas.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-5 flex gap-4 items-start">
+          <div class="w-11 h-11 bg-blue-500 rounded-xl flex items-center justify-center shrink-0">
+            <i class="fas fa-eye text-white"></i>
+          </div>
+          <div>
+            <h3 class="text-white font-bold text-base mb-1">Visión</h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              Ser un referente académico nacional e internacional en el estudio de la economía
+              popular, contribuyendo a la formulación de políticas públicas inclusivas y al
+              fortalecimiento de las comunidades mexicanas.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-5 flex gap-4 items-start">
+          <div class="w-11 h-11 bg-gold-600 rounded-xl flex items-center justify-center shrink-0">
+            <i class="fas fa-lightbulb text-white"></i>
+          </div>
+          <div>
+            <h3 class="text-white font-bold text-base mb-1">Propósito</h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              Articular investigación, docencia y difusión para visibilizar, analizar y
+              acompañar las prácticas económicas populares como fundamento de la vida social
+              y económica del país.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="bg-navy-900/80 backdrop-blur py-6 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div><p class="text-eco-400 text-3xl font-black">24+</p><p class="text-gray-400 text-xs mt-1 uppercase tracking-wide">Publicaciones</p></div>
+      <div><p class="text-eco-400 text-3xl font-black">8</p><p class="text-gray-400 text-xs mt-1 uppercase tracking-wide">Investigadores</p></div>
+      <div><p class="text-eco-400 text-3xl font-black">12</p><p class="text-gray-400 text-xs mt-1 uppercase tracking-wide">Congresos</p></div>
+      <div><p class="text-eco-400 text-3xl font-black">5</p><p class="text-gray-400 text-xs mt-1 uppercase tracking-wide">Años activos</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     METODOLOGÍA DE INVESTIGACIÓN
+═══════════════════════════════════════════════ -->
+<section id="metodologia" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <span class="text-eco-600 font-bold text-xs uppercase tracking-widest">Nuestro enfoque</span>
+      <h2 class="text-3xl lg:text-4xl font-black text-navy-900 mt-3 mb-4">Metodología de Investigación</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto text-base leading-relaxed">
+        Adoptamos un enfoque integral que combina rigor científico con sensibilidad social,
+        articulando perspectivas cuantitativas, cualitativas y métodos mixtos.
+      </p>
+      <div class="divider max-w-xs mx-auto mt-7"></div>
+    </div>
+
+    <!-- Three method columns -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-14">
+
+      <!-- Cuantitativo -->
+      <div class="card-rise bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 border border-blue-200">
+        <div class="w-14 h-14 bg-navy-800 rounded-2xl flex items-center justify-center mb-6">
+          <i class="fas fa-chart-bar text-white text-xl"></i>
+        </div>
+        <div class="inline-block bg-navy-800 text-white text-xs font-bold px-2.5 py-1 rounded-full mb-4">Cuantitativo</div>
+        <h3 class="text-navy-900 font-extrabold text-xl mb-3">Datos y medición</h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+          Análisis estadístico de datos económicos, encuestas representativas y modelos
+          econométricos para medir fenómenos de la economía popular a escala nacional y regional.
+        </p>
+        <ul class="space-y-2.5 text-sm">
+          <li class="flex items-center gap-2 text-gray-700"><i class="fas fa-check-circle text-navy-700 text-xs"></i> Análisis econométrico</li>
+          <li class="flex items-center gap-2 text-gray-700"><i class="fas fa-check-circle text-navy-700 text-xs"></i> Encuestas y muestreo probabilístico</li>
+          <li class="flex items-center gap-2 text-gray-700"><i class="fas fa-check-circle text-navy-700 text-xs"></i> Modelos de regresión y series de tiempo</li>
+          <li class="flex items-center gap-2 text-gray-700"><i class="fas fa-check-circle text-navy-700 text-xs"></i> Bases de datos INEGI, ENOE, ENIGH</li>
+        </ul>
+      </div>
+
+      <!-- Mixtos (destacado) -->
+      <div class="card-rise bg-gradient-to-br from-eco-600 to-eco-800 rounded-2xl p-8 shadow-2xl shadow-eco-600/20 relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span class="bg-gold-400 text-navy-900 text-xs font-black px-3 py-1 rounded-full shadow">Enfoque integrador</span>
+        </div>
+        <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6 mt-2">
+          <i class="fas fa-project-diagram text-white text-xl"></i>
+        </div>
+        <div class="inline-block bg-white/20 text-white text-xs font-bold px-2.5 py-1 rounded-full mb-4">Métodos Mixtos</div>
+        <h3 class="text-white font-extrabold text-xl mb-3">Triangulación e integración</h3>
+        <p class="text-eco-100 text-sm leading-relaxed mb-5">
+          Articulamos herramientas cuantitativas y cualitativas para capturar la complejidad
+          de los fenómenos económicos populares desde múltiples dimensiones analíticas.
+        </p>
+        <ul class="space-y-2.5 text-sm">
+          <li class="flex items-center gap-2 text-eco-100"><i class="fas fa-check-circle text-eco-300 text-xs"></i> Triangulación de fuentes y métodos</li>
+          <li class="flex items-center gap-2 text-eco-100"><i class="fas fa-check-circle text-eco-300 text-xs"></i> Diseño secuencial explicativo</li>
+          <li class="flex items-center gap-2 text-eco-100"><i class="fas fa-check-circle text-eco-300 text-xs"></i> Análisis convergente paralelo</li>
+          <li class="flex items-center gap-2 text-eco-100"><i class="fas fa-check-circle text-eco-300 text-xs"></i> Integración explicativa y narrativa</li>
+        </ul>
+      </div>
+
+      <!-- Cualitativo -->
+      <div class="card-rise bg-gradient-to-br from-amber-50 to-amber-100 rounded-2xl p-8 border border-amber-200">
+        <div class="w-14 h-14 bg-gold-700 rounded-2xl flex items-center justify-center mb-6">
+          <i class="fas fa-comments text-white text-xl"></i>
+        </div>
+        <div class="inline-block bg-gold-700 text-white text-xs font-bold px-2.5 py-1 rounded-full mb-4">Cualitativo</div>
+        <h3 class="text-amber-900 font-extrabold text-xl mb-3">Experiencias y significados</h3>
+        <p class="text-gray-600 text-sm leading-relaxed mb-5">
+          Exploración profunda de experiencias, significados y procesos a través de etnografía,
+          entrevistas y análisis del discurso para comprender la economía desde los sujetos.
+        </p>
+        <ul class="space-y-2.5 text-sm">
+          <li class="flex items-center gap-2 text-gray-700"><i class="fas fa-check-circle text-gold-600 text-xs"></i> Etnografía económica</li>
+          <li class="flex items-center gap-2 text-gray-700"><i class="fas fa-check-circle text-gold-600 text-xs"></i> Entrevistas a profundidad</li>
+          <li class="flex items-center gap-2 text-gray-700"><i class="fas fa-check-circle text-gold-600 text-xs"></i> Grupos focales y talleres</li>
+          <li class="flex items-center gap-2 text-gray-700"><i class="fas fa-check-circle text-gold-600 text-xs"></i> Análisis crítico del discurso</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Research process flow -->
+    <div class="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+      <h3 class="text-navy-900 font-extrabold text-xl mb-8 text-center">Proceso integral de investigación</h3>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center">
+
+        <div class="flex-1">
+          <div class="w-12 h-12 bg-navy-800 rounded-full flex items-center justify-center mx-auto mb-3 text-white font-black">1</div>
+          <p class="text-sm font-bold text-navy-900">Problematización</p>
+          <p class="text-xs text-gray-500 mt-1">Identificación del fenómeno</p>
+        </div>
+
+        <i class="fas fa-long-arrow-alt-right text-gray-300 text-xl hidden md:block"></i>
+
+        <div class="flex-1">
+          <div class="w-12 h-12 bg-eco-600 rounded-full flex items-center justify-center mx-auto mb-3 text-white font-black">2</div>
+          <p class="text-sm font-bold text-navy-900">Diseño</p>
+          <p class="text-xs text-gray-500 mt-1">Marco metodológico</p>
+        </div>
+
+        <i class="fas fa-long-arrow-alt-right text-gray-300 text-xl hidden md:block"></i>
+
+        <div class="flex-1">
+          <div class="w-12 h-12 bg-eco-600 rounded-full flex items-center justify-center mx-auto mb-3 text-white font-black">3</div>
+          <p class="text-sm font-bold text-navy-900">Recolección</p>
+          <p class="text-xs text-gray-500 mt-1">Trabajo de campo y datos</p>
+        </div>
+
+        <i class="fas fa-long-arrow-alt-right text-gray-300 text-xl hidden md:block"></i>
+
+        <div class="flex-1">
+          <div class="w-12 h-12 bg-navy-800 rounded-full flex items-center justify-center mx-auto mb-3 text-white font-black">4</div>
+          <p class="text-sm font-bold text-navy-900">Análisis</p>
+          <p class="text-xs text-gray-500 mt-1">Interpretación de hallazgos</p>
+        </div>
+
+        <i class="fas fa-long-arrow-alt-right text-gray-300 text-xl hidden md:block"></i>
+
+        <div class="flex-1">
+          <div class="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center mx-auto mb-3 text-white font-black">5</div>
+          <p class="text-sm font-bold text-navy-900">Difusión</p>
+          <p class="text-xs text-gray-500 mt-1">Publicación y socialización</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     PUBLICACIONES
+═══════════════════════════════════════════════ -->
+<section id="publicaciones" class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <span class="text-eco-600 font-bold text-xs uppercase tracking-widest">Repositorio académico</span>
+      <h2 class="text-3xl lg:text-4xl font-black text-navy-900 mt-3 mb-4">Publicaciones</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto text-base leading-relaxed">
+        Artículos, ensayos y documentos de trabajo elaborados con rigor científico
+        y bajo las normas de citación <span class="font-semibold text-navy-900">APA 7.ª edición</span>.
+      </p>
+      <div class="divider max-w-xs mx-auto mt-7"></div>
+    </div>
+
+    <!-- APA 7 notice -->
+    <div class="flex items-start gap-3 bg-blue-50 border border-blue-200 rounded-xl px-5 py-4 mb-8">
+      <i class="fas fa-certificate text-blue-600 mt-0.5 text-lg"></i>
+      <div>
+        <p class="text-blue-900 font-bold text-sm">Normas APA — 7.ª Edición</p>
+        <p class="text-blue-700 text-xs mt-0.5 leading-relaxed">
+          Todas las publicaciones del Observatorio siguen el <em>Manual de Publicaciones</em> de la American
+          Psychological Association (APA), 7.ª edición. Los archivos descargables incluyen
+          formato, citas y referencias completamente estandarizados.
+        </p>
+      </div>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      <button class="bg-navy-900 text-white px-4 py-2 rounded-full text-xs font-bold">Todos</button>
+      <button class="bg-white text-gray-600 hover:bg-gray-100 border border-gray-300 px-4 py-2 rounded-full text-xs font-medium transition">Artículos</button>
+      <button class="bg-white text-gray-600 hover:bg-gray-100 border border-gray-300 px-4 py-2 rounded-full text-xs font-medium transition">Ensayos</button>
+      <button class="bg-white text-gray-600 hover:bg-gray-100 border border-gray-300 px-4 py-2 rounded-full text-xs font-medium transition">Documentos de Trabajo</button>
+      <button class="bg-white text-gray-600 hover:bg-gray-100 border border-gray-300 px-4 py-2 rounded-full text-xs font-medium transition">Reportes</button>
+    </div>
+
+    <!-- Publications grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Pub 1 -->
+      <article class="card-rise bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col">
+        <div class="bg-gradient-to-r from-navy-800 to-navy-900 px-5 py-3 flex gap-2">
+          <span class="bg-blue-100 text-blue-900 text-[10px] font-black px-2 py-0.5 rounded-full">Artículo</span>
+          <span class="bg-amber-100 text-amber-900 text-[10px] font-black px-2 py-0.5 rounded-full">APA 7</span>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <h4 class="font-bold text-navy-900 text-sm leading-snug mb-2">
+            Economía informal y estrategias de subsistencia en contextos urbanos de México
+          </h4>
+          <p class="text-[11px] text-gray-500 italic mb-3">
+            García López, M. A., &amp; Hernández Torres, J. (2024). <em>CIEP Working Paper, 1</em>(2), 45–67.
+          </p>
+          <p class="text-gray-600 text-xs leading-relaxed flex-1 mb-4">
+            Análisis de las estrategias económicas desarrolladas por familias en zonas urbanas marginadas,
+            con énfasis en redes de solidaridad y mercados no formales.
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="flex items-center gap-1.5 text-[11px] text-gray-400">
+              <i class="fas fa-user-circle"></i> García López et al. · 2024
+            </span>
+            <a href="#" class="inline-flex items-center gap-1.5 bg-navy-800 hover:bg-navy-700 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition">
+              <i class="fas fa-file-word text-blue-300"></i> Descargar .docx
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Pub 2 -->
+      <article class="card-rise bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col">
+        <div class="bg-gradient-to-r from-eco-700 to-eco-800 px-5 py-3 flex gap-2">
+          <span class="bg-teal-100 text-teal-900 text-[10px] font-black px-2 py-0.5 rounded-full">Ensayo</span>
+          <span class="bg-amber-100 text-amber-900 text-[10px] font-black px-2 py-0.5 rounded-full">APA 7</span>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <h4 class="font-bold text-navy-900 text-sm leading-snug mb-2">
+            Mercados de trabajo y economía popular: tensiones estructurales en el México contemporáneo
+          </h4>
+          <p class="text-[11px] text-gray-500 italic mb-3">
+            Martínez Rojas, P. E. (2024). <em>Ensayos del CIEP, 3</em>(1), 12–34.
+          </p>
+          <p class="text-gray-600 text-xs leading-relaxed flex-1 mb-4">
+            Reflexión teórica sobre las contradicciones entre las dinámicas del mercado laboral
+            formal e informal y su impacto en la economía popular.
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="flex items-center gap-1.5 text-[11px] text-gray-400">
+              <i class="fas fa-user-circle"></i> Martínez Rojas · 2024
+            </span>
+            <a href="#" class="inline-flex items-center gap-1.5 bg-navy-800 hover:bg-navy-700 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition">
+              <i class="fas fa-file-word text-blue-300"></i> Descargar .docx
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Pub 3 -->
+      <article class="card-rise bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col">
+        <div class="bg-gradient-to-r from-gold-700 to-amber-800 px-5 py-3 flex gap-2">
+          <span class="bg-amber-100 text-amber-900 text-[10px] font-black px-2 py-0.5 rounded-full">Doc. Trabajo</span>
+          <span class="bg-amber-100 text-amber-900 text-[10px] font-black px-2 py-0.5 rounded-full">APA 7</span>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <h4 class="font-bold text-navy-900 text-sm leading-snug mb-2">
+            Finanzas populares y microcrédito: análisis comparado en comunidades indígenas de Oaxaca
+          </h4>
+          <p class="text-[11px] text-gray-500 italic mb-3">
+            Ramírez Cisneros, L., &amp; Torres Vega, A. (2023). <em>CIEP DT, 2</em>(4), 78–102.
+          </p>
+          <p class="text-gray-600 text-xs leading-relaxed flex-1 mb-4">
+            Estudio comparado sobre el acceso y uso de microcréditos en comunidades indígenas,
+            analizando el papel de las cajas de ahorro comunitarias.
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="flex items-center gap-1.5 text-[11px] text-gray-400">
+              <i class="fas fa-user-circle"></i> Ramírez &amp; Torres · 2023
+            </span>
+            <a href="#" class="inline-flex items-center gap-1.5 bg-navy-800 hover:bg-navy-700 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition">
+              <i class="fas fa-file-word text-blue-300"></i> Descargar .docx
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Pub 4 -->
+      <article class="card-rise bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col">
+        <div class="bg-gradient-to-r from-navy-800 to-navy-900 px-5 py-3 flex gap-2">
+          <span class="bg-blue-100 text-blue-900 text-[10px] font-black px-2 py-0.5 rounded-full">Artículo</span>
+          <span class="bg-amber-100 text-amber-900 text-[10px] font-black px-2 py-0.5 rounded-full">APA 7</span>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <h4 class="font-bold text-navy-900 text-sm leading-snug mb-2">
+            Economía solidaria y cooperativismo popular: experiencias en el Estado de México
+          </h4>
+          <p class="text-[11px] text-gray-500 italic mb-3">
+            López Mendoza, F., Gutiérrez Ávila, R., &amp; Soto Bravo, C. (2023). <em>CIEP Working Paper, 2</em>(1), 1–28.
+          </p>
+          <p class="text-gray-600 text-xs leading-relaxed flex-1 mb-4">
+            Mapeo y análisis de experiencias cooperativistas evaluando su impacto económico
+            y social en las comunidades participantes.
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="flex items-center gap-1.5 text-[11px] text-gray-400">
+              <i class="fas fa-user-circle"></i> López et al. · 2023
+            </span>
+            <a href="#" class="inline-flex items-center gap-1.5 bg-navy-800 hover:bg-navy-700 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition">
+              <i class="fas fa-file-word text-blue-300"></i> Descargar .docx
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Pub 5 -->
+      <article class="card-rise bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col">
+        <div class="bg-gradient-to-r from-eco-700 to-eco-800 px-5 py-3 flex gap-2">
+          <span class="bg-teal-100 text-teal-900 text-[10px] font-black px-2 py-0.5 rounded-full">Ensayo</span>
+          <span class="bg-amber-100 text-amber-900 text-[10px] font-black px-2 py-0.5 rounded-full">APA 7</span>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <h4 class="font-bold text-navy-900 text-sm leading-snug mb-2">
+            Género y economía popular: el trabajo de cuidados como sustento invisible de la economía mexicana
+          </h4>
+          <p class="text-[11px] text-gray-500 italic mb-3">
+            Flores Castillo, S. M. (2023). <em>Ensayos del CIEP, 2</em>(3), 55–79.
+          </p>
+          <p class="text-gray-600 text-xs leading-relaxed flex-1 mb-4">
+            Análisis feminista de la economía del cuidado y su articulación con las dinámicas
+            de la economía popular, visibilizando el trabajo no remunerado de las mujeres.
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="flex items-center gap-1.5 text-[11px] text-gray-400">
+              <i class="fas fa-user-circle"></i> Flores Castillo · 2023
+            </span>
+            <a href="#" class="inline-flex items-center gap-1.5 bg-navy-800 hover:bg-navy-700 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition">
+              <i class="fas fa-file-word text-blue-300"></i> Descargar .docx
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ver más CTA -->
+      <div class="bg-gradient-to-br from-navy-900 to-eco-800 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
+        <i class="fas fa-folder-open text-eco-400 text-4xl mb-4"></i>
+        <h4 class="text-white font-extrabold text-lg mb-2">Repositorio completo</h4>
+        <p class="text-eco-200 text-sm mb-6 leading-relaxed">Accede a todas nuestras publicaciones, documentos de trabajo y reportes de investigación.</p>
+        <a href="#" class="inline-flex items-center gap-2 bg-white text-navy-900 font-bold px-5 py-2.5 rounded-xl hover:bg-eco-50 transition text-sm">
+          <i class="fas fa-external-link-alt text-xs"></i> Ver todas (24+)
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     CONGRESOS Y DIFUSIÓN
+═══════════════════════════════════════════════ -->
+<section id="congresos" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <span class="text-eco-600 font-bold text-xs uppercase tracking-widest">Participación académica</span>
+      <h2 class="text-3xl lg:text-4xl font-black text-navy-900 mt-3 mb-4">Congresos y Difusión</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto text-base leading-relaxed">
+        Mesas redondas, ponencias y presentaciones en foros académicos nacionales e internacionales
+        donde el Observatorio comparte sus avances de investigación.
+      </p>
+      <div class="divider max-w-xs mx-auto mt-7"></div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Event 1 -->
+      <article class="card-rise bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 flex flex-col">
+        <div class="relative bg-gradient-to-br from-navy-800 to-navy-900 h-44 flex items-center justify-center">
+          <i class="fas fa-users text-white/20 text-6xl"></i>
+          <div class="absolute inset-0 flex items-end p-3 gap-2">
+            <span class="bg-gold-400 text-navy-900 text-[10px] font-black px-2 py-0.5 rounded-full">Mesa Redonda</span>
+            <span class="ml-auto bg-white/20 backdrop-blur text-white text-[10px] px-2 py-0.5 rounded-full">
+              <i class="fas fa-map-marker-alt mr-1"></i>CDMX
+            </span>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <p class="text-eco-600 text-[11px] font-bold mb-1 uppercase tracking-wide">Noviembre 2024</p>
+          <h4 class="font-bold text-navy-900 text-sm leading-snug mb-2">Congreso Nacional de Economía Social y Solidaria</h4>
+          <p class="text-gray-600 text-xs leading-relaxed flex-1 mb-4">
+            Mesa redonda: "Perspectivas metodológicas para el estudio de la economía popular en México."
+            Participación de cinco investigadores del CIEP.
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="text-[11px] text-gray-400 flex items-center gap-1">
+              <i class="fas fa-university text-xs"></i> UNAM · FE
+            </span>
+            <a href="#" class="inline-flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition">
+              <i class="fas fa-file-powerpoint"></i> Descargar .pptx
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 2 -->
+      <article class="card-rise bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 flex flex-col">
+        <div class="relative bg-gradient-to-br from-eco-700 to-eco-900 h-44 flex items-center justify-center">
+          <i class="fas fa-chalkboard-teacher text-white/20 text-6xl"></i>
+          <div class="absolute inset-0 flex items-end p-3 gap-2">
+            <span class="bg-teal-300 text-teal-900 text-[10px] font-black px-2 py-0.5 rounded-full">Ponencia</span>
+            <span class="ml-auto bg-white/20 backdrop-blur text-white text-[10px] px-2 py-0.5 rounded-full">
+              <i class="fas fa-map-marker-alt mr-1"></i>Guadalajara
+            </span>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <p class="text-eco-600 text-[11px] font-bold mb-1 uppercase tracking-wide">Septiembre 2024</p>
+          <h4 class="font-bold text-navy-900 text-sm leading-snug mb-2">Coloquio Internacional de Economía Política Latinoamericana</h4>
+          <p class="text-gray-600 text-xs leading-relaxed flex-1 mb-4">
+            Ponencia: "Economía popular y trabajo informal: el caso de los mercados ambulantes
+            en la Zona Metropolitana del Valle de México."
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="text-[11px] text-gray-400 flex items-center gap-1">
+              <i class="fas fa-university text-xs"></i> U. de Guadalajara
+            </span>
+            <a href="#" class="inline-flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition">
+              <i class="fas fa-file-powerpoint"></i> Descargar .pptx
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 3 -->
+      <article class="card-rise bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 flex flex-col">
+        <div class="relative bg-gradient-to-br from-gold-700 to-amber-900 h-44 flex items-center justify-center">
+          <i class="fas fa-globe-americas text-white/20 text-6xl"></i>
+          <div class="absolute inset-0 flex items-end p-3 gap-2">
+            <span class="bg-blue-200 text-blue-900 text-[10px] font-black px-2 py-0.5 rounded-full">Simposio</span>
+            <span class="ml-auto bg-white/20 backdrop-blur text-white text-[10px] px-2 py-0.5 rounded-full">
+              <i class="fas fa-video mr-1"></i>Virtual
+            </span>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <p class="text-eco-600 text-[11px] font-bold mb-1 uppercase tracking-wide">Junio 2024</p>
+          <h4 class="font-bold text-navy-900 text-sm leading-snug mb-2">Simposio Virtual CLACSO: Economías Populares en América Latina</h4>
+          <p class="text-gray-600 text-xs leading-relaxed flex-1 mb-4">
+            Panel virtual del CLACSO sobre los impactos post-pandemia en las economías populares
+            de la región latinoamericana.
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="text-[11px] text-gray-400 flex items-center gap-1">
+              <i class="fas fa-university text-xs"></i> CLACSO · Virtual
+            </span>
+            <a href="#" class="inline-flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition">
+              <i class="fas fa-file-powerpoint"></i> Descargar .pptx
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 4 -->
+      <article class="card-rise bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 flex flex-col">
+        <div class="relative bg-gradient-to-br from-blue-700 to-navy-900 h-44 flex items-center justify-center">
+          <i class="fas fa-microphone-alt text-white/20 text-6xl"></i>
+          <div class="absolute inset-0 flex items-end p-3 gap-2">
+            <span class="bg-gold-400 text-navy-900 text-[10px] font-black px-2 py-0.5 rounded-full">Conferencia</span>
+            <span class="ml-auto bg-white/20 backdrop-blur text-white text-[10px] px-2 py-0.5 rounded-full">
+              <i class="fas fa-map-marker-alt mr-1"></i>Monterrey
+            </span>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <p class="text-eco-600 text-[11px] font-bold mb-1 uppercase tracking-wide">Marzo 2024</p>
+          <h4 class="font-bold text-navy-900 text-sm leading-snug mb-2">XII Congreso Mexicano de Sociología Económica</h4>
+          <p class="text-gray-600 text-xs leading-relaxed flex-1 mb-4">
+            Conferencia magistral: "Nuevos marcos teóricos para el análisis de la economía popular
+            desde la sociología económica crítica mexicana."
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="text-[11px] text-gray-400 flex items-center gap-1">
+              <i class="fas fa-university text-xs"></i> UANL · Monterrey
+            </span>
+            <a href="#" class="inline-flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition">
+              <i class="fas fa-file-powerpoint"></i> Descargar .pptx
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Event 5 -->
+      <article class="card-rise bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 flex flex-col">
+        <div class="relative bg-gradient-to-br from-eco-600 to-navy-800 h-44 flex items-center justify-center">
+          <i class="fas fa-handshake text-white/20 text-6xl"></i>
+          <div class="absolute inset-0 flex items-end p-3 gap-2">
+            <span class="bg-teal-300 text-teal-900 text-[10px] font-black px-2 py-0.5 rounded-full">Mesa Redonda</span>
+            <span class="ml-auto bg-white/20 backdrop-blur text-white text-[10px] px-2 py-0.5 rounded-full">
+              <i class="fas fa-map-marker-alt mr-1"></i>Puebla
+            </span>
+          </div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+          <p class="text-eco-600 text-[11px] font-bold mb-1 uppercase tracking-wide">Octubre 2023</p>
+          <h4 class="font-bold text-navy-900 text-sm leading-snug mb-2">Foro Regional: Economía Popular y Política Pública en el Sur-Sureste</h4>
+          <p class="text-gray-600 text-xs leading-relaxed flex-1 mb-4">
+            Mesa de debate sobre el rol de las políticas públicas en el fortalecimiento de las
+            economías populares en las regiones sur y sureste de México.
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="text-[11px] text-gray-400 flex items-center gap-1">
+              <i class="fas fa-university text-xs"></i> BUAP · Puebla
+            </span>
+            <a href="#" class="inline-flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg transition">
+              <i class="fas fa-file-powerpoint"></i> Descargar .pptx
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CTA card -->
+      <div class="bg-gradient-to-br from-navy-900 to-eco-800 rounded-2xl p-8 flex flex-col items-center justify-center text-center">
+        <i class="fas fa-calendar-check text-eco-400 text-4xl mb-4"></i>
+        <h4 class="text-white font-extrabold text-lg mb-2">Historial completo de eventos</h4>
+        <p class="text-eco-200 text-sm mb-6 leading-relaxed">Consulta todos los congresos, seminarios y foros donde ha participado el Observatorio.</p>
+        <a href="#" class="inline-flex items-center gap-2 bg-white text-navy-900 font-bold px-5 py-2.5 rounded-xl hover:bg-eco-50 transition text-sm">
+          <i class="fas fa-external-link-alt text-xs"></i> Ver todos los eventos
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER · CONTACTO
+═══════════════════════════════════════════════ -->
+<footer id="contacto" class="bg-navy-900 text-white pt-16 pb-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-3 gap-10 mb-12">
+
+      <!-- Brand / About -->
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 bg-eco-500 rounded-lg flex items-center justify-center">
+            <span class="text-white font-black text-sm">OE</span>
+          </div>
+          <div>
+            <p class="font-extrabold text-white text-sm">Observatorio Eco</p>
+            <p class="text-eco-400 text-[10px] font-bold uppercase tracking-widest">CIEP · UNAM</p>
+          </div>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Observatorio sobre Estudios de la Economía Popular en México. Investigación,
+          docencia y difusión del conocimiento sobre las economías populares.
+        </p>
+      </div>
+
+      <!-- Nav links -->
+      <div>
+        <h5 class="font-bold text-white text-sm mb-4 uppercase tracking-wider">Secciones</h5>
+        <ul class="space-y-2.5 text-sm text-gray-400">
+          <li><a href="#inicio"        class="hover:text-eco-400 transition-colors">Inicio</a></li>
+          <li><a href="#metodologia"   class="hover:text-eco-400 transition-colors">Metodología de Investigación</a></li>
+          <li><a href="#publicaciones" class="hover:text-eco-400 transition-colors">Publicaciones</a></li>
+          <li><a href="#congresos"     class="hover:text-eco-400 transition-colors">Congresos y Difusión</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h5 class="font-bold text-white text-sm mb-4 uppercase tracking-wider">Contacto</h5>
+        <ul class="space-y-3 text-sm text-gray-400">
+          <li class="flex items-center gap-2.5"><i class="fas fa-envelope text-eco-400 w-4"></i> observatorio.ciep@unam.mx</li>
+          <li class="flex items-center gap-2.5"><i class="fas fa-map-marker-alt text-eco-400 w-4"></i> Ciudad Universitaria, CDMX</li>
+          <li class="flex items-center gap-2.5"><i class="fas fa-phone text-eco-400 w-4"></i> +52 (55) 5623-0000</li>
+        </ul>
+        <div class="flex gap-3 mt-5">
+          <a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-eco-500 transition-colors"><i class="fab fa-twitter text-xs"></i></a>
+          <a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-eco-500 transition-colors"><i class="fab fa-facebook-f text-xs"></i></a>
+          <a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-eco-500 transition-colors"><i class="fab fa-linkedin-in text-xs"></i></a>
+          <a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-eco-500 transition-colors"><i class="fab fa-youtube text-xs"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-gray-500 text-xs">
+      <p>© 2024 Observatorio sobre Estudios de la Economía Popular en México · CIEP · UNAM. Todos los derechos reservados.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-eco-400 transition-colors">Aviso de privacidad</a>
+        <a href="#" class="hover:text-eco-400 transition-colors">Accesibilidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ─── JS: mobile menu + active nav ─── -->
+<script>
+  const menuBtn    = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => mobileMenu.classList.add('hidden'))
+  );
+
+  // Highlight active section in navbar
+  const sections  = document.querySelectorAll('section[id], footer[id]');
+  const navLinks  = document.querySelectorAll('nav a[href^="#"]');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => {
+          l.classList.toggle('nav-active', l.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
