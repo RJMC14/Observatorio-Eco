@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — CIEP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --tinta-900: #2e1c0b;
+      --tinta-800: #4a2c16;
+      --tinta-700: #5e3820;
+      --papel-50:  #FDF8E8;
+      --papel-100: #F8F1D8;
+      --papel-200: #F0E6C2;
+      --cemp-500:  #E97A36;
+      --cemp-600:  #C85F22;
+      --talavera:  #2F6B92;
+      --nopal:     #5F7A4A;
+      --coyoacan:  #B5341E;
+      --maiz:      #C99826;
+      --font-d: 'Fraunces', Georgia, serif;
+      --font-s: 'Source Sans 3', system-ui, sans-serif;
+      --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--tinta-700); color: var(--papel-100); font-family: var(--font-s); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+    .talavera-strip {
+      height: 5px;
+      background: repeating-linear-gradient(90deg,
+        var(--talavera) 0px, var(--talavera) 20px,
+        var(--cemp-500) 20px, var(--cemp-500) 40px,
+        var(--coyoacan) 40px, var(--coyoacan) 60px,
+        var(--nopal)    60px, var(--nopal)    80px,
+        var(--maiz)     80px, var(--maiz)    100px);
+    }
+
+    /* NAV */
+    nav {
+      height: 64px; display: flex; align-items: center;
+      background: rgba(46,28,11,0.95); backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(233,122,54,0.18);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+    .nav-logo img { width: 48px; height: 48px; object-fit: contain; }
+    .nav-logo strong { font-family: var(--font-d); font-size: 15px; color: var(--papel-50); font-variation-settings: "opsz" 36; }
+    .nav-logo span   { display: block; font-size: 9px; color: var(--cemp-500); text-transform: uppercase; letter-spacing: 0.13em; font-weight: 600; }
+    .back-link { display: inline-flex; align-items: center; gap: 7px; color: var(--papel-200); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 180ms; }
+    .back-link:hover { color: var(--cemp-500); }
+
+    /* LAYOUT */
+    .page-wrap {
+      max-width: 1100px; margin: 0 auto; padding: 72px 24px 96px;
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: start;
+    }
+
+    /* LEFT — info */
+    .contact-info { position: sticky; top: 88px; }
+    .info-eyebrow { font-size: 10.5px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--cemp-500); margin-bottom: 12px; }
+    .info-title { font-family: var(--font-d); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--papel-50); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 18px; font-variation-settings: "opsz" 72; }
+    .info-desc { font-size: 15px; color: var(--papel-200); line-height: 1.72; margin-bottom: 36px; }
+    .talavera-rule { height: 3px; width: 64px; background: linear-gradient(90deg, var(--talavera), var(--cemp-500)); border-radius: 2px; margin-bottom: 36px; }
+
+    .info-cards { display: flex; flex-direction: column; gap: 14px; }
+    .info-card {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(233,122,54,0.14);
+      border-radius: 12px; padding: 16px 18px;
+      text-decoration: none;
+      transition: border-color 200ms, background 200ms;
+    }
+    .info-card:hover { border-color: rgba(233,122,54,0.35); background: rgba(255,255,255,0.08); }
+    .info-card-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .info-card-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cemp-500); margin-bottom: 3px; }
+    .info-card-val   { font-size: 13.5px; color: var(--papel-100); font-weight: 500; }
+
+    /* RIGHT — form */
+    .form-card {
+      background: var(--tinta-800); border: 1px solid rgba(233,122,54,0.18);
+      border-radius: 22px; padding: 40px; position: relative; overflow: hidden;
+    }
+    .form-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--cemp-500), var(--talavera));
+    }
+    .form-title { font-family: var(--font-d); font-size: 1.5rem; font-weight: 700; color: var(--papel-50); margin-bottom: 6px; font-variation-settings: "opsz" 36; }
+    .form-sub   { font-size: 13.5px; color: var(--papel-200); margin-bottom: 28px; line-height: 1.6; }
+
+    .field { margin-bottom: 20px; }
+    .field label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--cemp-500); margin-bottom: 7px; }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 13px 16px;
+      color: var(--papel-50); font-family: var(--font-s); font-size: 14.5px;
+      outline: none; transition: border-color 200ms, background 200ms;
+      -webkit-appearance: none; appearance: none;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: rgba(240,230,194,0.3); }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--cemp-500); background: rgba(255,255,255,0.09);
+    }
+    .field select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23E97A36' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+    .field select option { background: var(--tinta-800); color: var(--papel-50); }
+    .field textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .btn-submit {
+      width: 100%; padding: 15px 24px;
+      background: var(--cemp-500); color: var(--tinta-900);
+      font-family: var(--font-s); font-size: 15px; font-weight: 700;
+      border: none; border-radius: 11px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: background 200ms var(--ease), transform 120ms var(--ease), box-shadow 200ms;
+      box-shadow: 0 6px 20px rgba(233,122,54,0.3); margin-top: 8px;
+    }
+    .btn-submit:hover { background: var(--cemp-600); color: var(--papel-50); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(233,122,54,0.4); }
+    .btn-submit:active { transform: scale(0.98); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .form-note { font-size: 11.5px; color: rgba(240,230,194,0.4); text-align: center; margin-top: 14px; line-height: 1.6; }
+
+    /* SUCCESS STATE */
+    .success-state {
+      display: none; text-align: center; padding: 20px 0;
+    }
+    .success-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(95,122,74,0.2); border: 2px solid var(--nopal);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; font-size: 28px; color: #9CB48A;
+      animation: pop-in 400ms var(--ease);
+    }
+    @keyframes pop-in { from{transform:scale(0.5);opacity:0} to{transform:scale(1);opacity:1} }
+    .success-title { font-family: var(--font-d); font-size: 1.6rem; font-weight: 700; color: var(--papel-50); margin-bottom: 10px; font-variation-settings: "opsz" 36; }
+    .success-msg   { font-size: 14px; color: var(--papel-200); line-height: 1.65; margin-bottom: 24px; }
+    .btn-back { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: var(--papel-100); text-decoration: none; padding: 11px 22px; border-radius: 9px; font-size: 13.5px; font-weight: 600; transition: background 200ms; }
+    .btn-back:hover { background: rgba(255,255,255,0.12); color: var(--papel-50); }
+
+    /* SPINNER */
+    .spinner { width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .page-wrap { grid-template-columns: 1fr; gap: 40px; padding: 48px 20px 72px; }
+      .contact-info { position: static; }
+      .field-row { grid-template-columns: 1fr; }
+    }
+
+    footer { border-top: 1px solid rgba(233,122,54,0.1); padding: 20px 24px; text-align: center; }
+    footer p { font-size: 11.5px; color: rgba(240,230,194,0.35); }
+    footer a { color: rgba(233,122,54,0.5); text-decoration: none; }
+    footer a:hover { color: var(--cemp-500); }
+  </style>
+</head>
+<body>
+
+<div class="talavera-strip"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo-ciep.png" alt="Logo CIEP" />
+      <div>
+        <strong>CIEP</strong>
+        <span>Economía Popular · México</span>
+      </div>
+    </a>
+    <a href="index.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Volver al inicio
+    </a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- LEFT — Información -->
+  <div class="contact-info">
+    <div class="info-eyebrow">Escríbenos</div>
+    <h1 class="info-title">¿Cómo podemos ayudarte?</h1>
+    <p class="info-desc">
+      Ya sea que quieras colaborar, participar en el estudio, proponer un espacio académico o simplemente saber más sobre el CIEP, estamos para escucharte. Responderemos a la brevedad.
+    </p>
+    <div class="talavera-rule"></div>
+    <div class="info-cards">
+      <a href="mailto:ciep_mex@outlook.com" class="info-card">
+        <div class="info-card-icon" style="background:rgba(233,122,54,0.15);color:var(--cemp-500)">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div>
+          <div class="info-card-label">Correo electrónico</div>
+          <div class="info-card-val">ciep_mex@outlook.com</div>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/mex_ciep" target="_blank" rel="noopener noreferrer" class="info-card">
+        <div class="info-card-icon" style="background:rgba(181,52,30,0.15);color:#e06070">
+          <i class="fab fa-instagram"></i>
+        </div>
+        <div>
+          <div class="info-card-label">Instagram</div>
+          <div class="info-card-val">@mex_ciep</div>
+        </div>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61572157345570" target="_blank" rel="noopener noreferrer" class="info-card">
+        <div class="info-card-icon" style="background:rgba(47,107,146,0.15);color:var(--talavera-300, #7FA8C4)">
+          <i class="fab fa-facebook-f"></i>
+        </div>
+        <div>
+          <div class="info-card-label">Facebook</div>
+          <div class="info-card-val">CIEP México</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- RIGHT — Formulario -->
+  <div class="form-card">
+
+    <!-- Formulario -->
+    <div id="formWrap">
+      <div class="form-title">Envíanos un mensaje</div>
+      <p class="form-sub">Todos los campos son obligatorios. Tu información es tratada con estricta confidencialidad.</p>
+
+      <!--
+        ══════════════════════════════════════════════
+        CONFIGURACIÓN DE ENVÍO DE CORREO (Web3Forms)
+        ══════════════════════════════════════════════
+        Para activar el envío automático al correo ciep_mex@outlook.com:
+
+        1. Ve a https://web3forms.com
+        2. Escribe tu correo (ciep_mex@outlook.com) y haz clic en "Get your Access Key"
+        3. Recibirás la clave en tu correo
+        4. Reemplaza "TU_ACCESS_KEY_AQUI" en el campo oculto de abajo
+
+        ¡Es gratis y no requiere registro!
+        ══════════════════════════════════════════════
+      -->
+      <form id="contactForm" novalidate>
+        <input type="hidden" name="access_key" value="TU_ACCESS_KEY_AQUI" />
+        <input type="hidden" name="subject" value="Nuevo mensaje desde el sitio web del CIEP" />
+        <input type="hidden" name="from_name" value="Formulario CIEP" />
+        <input type="checkbox" name="botcheck" style="display:none" />
+
+        <div class="field-row">
+          <div class="field">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. María García López" required />
+          </div>
+          <div class="field">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="email" placeholder="tucorreo@ejemplo.com" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="motivo">Motivo del mensaje</label>
+          <select id="motivo" name="motivo" required>
+            <option value="" disabled selected>Selecciona un motivo…</option>
+            <option value="Colaboración institucional">Colaboración institucional</option>
+            <option value="Participar en el estudio">Participar en el estudio</option>
+            <option value="Propuesta de congreso o evento">Propuesta de congreso o evento</option>
+            <option value="Fundación o asociación aliada">Fundación o asociación aliada</option>
+            <option value="Medios de comunicación">Medios de comunicación</option>
+            <option value="Consulta académica">Consulta académica</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos en qué podemos colaborar o qué necesitas saber…" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+          <div class="spinner" id="spinner"></div>
+          <i class="fas fa-paper-plane" id="btnIcon"></i>
+          <span id="btnText">Enviar mensaje</span>
+        </button>
+        <p class="form-note">
+          <i class="fas fa-lock" style="color:var(--cemp-500)"></i>
+          Tu información es confidencial y solo se usará para responder tu mensaje. Consulta nuestro <a href="aviso-privacidad.html" style="color:var(--cemp-500)">aviso de privacidad</a>.
+        </p>
+      </form>
+    </div>
+
+    <!-- Estado de éxito -->
+    <div class="success-state" id="successState">
+      <div class="success-icon"><i class="fas fa-check"></i></div>
+      <div class="success-title">¡Mensaje enviado!</div>
+      <p class="success-msg">
+        Gracias por escribirnos. Hemos recibido tu mensaje y te responderemos a la brevedad posible en el correo que nos proporcionaste.
+      </p>
+      <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 CIEP — Observatorio sobre Estudios de la Economía Popular en México &nbsp;·&nbsp;
+    <a href="aviso-privacidad.html">Aviso de privacidad</a> &nbsp;·&nbsp;
+    <a href="aviso-legal.html">Aviso legal</a>
+  </p>
+</footer>
+
+<script>
+  const form     = document.getElementById('contactForm');
+  const formWrap = document.getElementById('formWrap');
+  const success  = document.getElementById('successState');
+  const btn      = document.getElementById('submitBtn');
+  const spinner  = document.getElementById('spinner');
+  const btnIcon  = document.getElementById('btnIcon');
+  const btnText  = document.getElementById('btnText');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Validación básica
+    const nombre  = form.nombre.value.trim();
+    const email   = form.email.value.trim();
+    const motivo  = form.motivo.value;
+    const mensaje = form.mensaje.value.trim();
+
+    if (!nombre || !email || !motivo || !mensaje) {
+      shake(btn);
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      form.email.focus();
+      shake(btn);
+      return;
+    }
+
+    // Estado cargando
+    btn.disabled = true;
+    spinner.style.display = 'block';
+    btnIcon.style.display = 'none';
+    btnText.textContent   = 'Enviando…';
+
+    try {
+      const data = new FormData(form);
+      const res  = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        formWrap.style.display = 'none';
+        success.style.display  = 'block';
+      } else {
+        throw new Error(json.message || 'Error al enviar');
+      }
+    } catch (err) {
+      btn.disabled = false;
+      spinner.style.display = 'none';
+      btnIcon.style.display = 'inline';
+      btnText.textContent   = 'Enviar mensaje';
+      alert('Hubo un problema al enviar el mensaje. Por favor intenta de nuevo o escríbenos directamente a ciep_mex@outlook.com');
+    }
+  });
+
+  function shake(el) {
+    el.style.animation = 'none';
+    el.offsetHeight; // reflow
+    el.style.animation = 'shake 400ms ease';
+  }
+</script>
+
+<style>
+  @keyframes shake {
+    0%,100%{transform:translateX(0)}
+    20%{transform:translateX(-6px)}
+    40%{transform:translateX(6px)}
+    60%{transform:translateX(-4px)}
+    80%{transform:translateX(4px)}
+  }
+</style>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aviso Legal — CIEP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --tinta-800: #4a2c16;
+      --tinta-700: #5e3820;
+      --papel-50:  #FDF8E8;
+      --papel-100: #F8F1D8;
+      --papel-200: #F0E6C2;
+      --cemp-500:  #E97A36;
+      --cemp-600:  #C85F22;
+      --talavera:  #2F6B92;
+      --nopal:     #5F7A4A;
+      --coyoacan:  #B5341E;
+      --maiz:      #C99826;
+      --font-d: 'Fraunces', Georgia, serif;
+      --font-s: 'Source Sans 3', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--tinta-800); color: var(--papel-100); font-family: var(--font-s); -webkit-font-smoothing: antialiased; }
+
+    .talavera-strip {
+      height: 5px;
+      background: repeating-linear-gradient(90deg,
+        var(--talavera) 0px, var(--talavera) 20px,
+        var(--cemp-500) 20px, var(--cemp-500) 40px,
+        var(--coyoacan) 40px, var(--coyoacan) 60px,
+        var(--nopal)    60px, var(--nopal)    80px,
+        var(--maiz)     80px, var(--maiz)    100px);
+    }
+    nav {
+      height: 60px; display: flex; align-items: center;
+      background: rgba(46,28,11,0.96); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(233,122,54,0.18); padding: 0 24px;
+    }
+    .nav-inner { max-width: 800px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { width: 34px; height: 34px; object-fit: contain; }
+    .nav-logo strong { font-family: var(--font-d); font-size: 15px; color: var(--papel-50); font-variation-settings: "opsz" 36; }
+    .back-link { display: inline-flex; align-items: center; gap: 7px; color: var(--papel-200); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 180ms; }
+    .back-link:hover { color: var(--cemp-500); }
+
+    main { max-width: 800px; margin: 0 auto; padding: 64px 24px 96px; }
+
+    .doc-eyebrow { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--cemp-500); margin-bottom: 12px; }
+    .doc-title { font-family: var(--font-d); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--papel-50); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px; font-variation-settings: "opsz" 72; }
+    .doc-meta { font-size: 13px; color: var(--papel-200); border-left: 3px solid var(--cemp-500); padding-left: 14px; line-height: 1.7; margin-bottom: 8px; }
+    .talavera-rule { height: 3px; width: 72px; background: linear-gradient(90deg, var(--talavera), var(--cemp-500)); border-radius: 2px; margin: 24px 0 48px; }
+
+    .id-card {
+      background: var(--tinta-700); border: 1px solid rgba(233,122,54,0.22);
+      border-radius: 20px; padding: 36px; margin-bottom: 44px;
+      position: relative; overflow: hidden;
+    }
+    .id-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--cemp-500), var(--talavera));
+    }
+    .id-card-title {
+      font-family: var(--font-d); font-size: 1.3rem; font-weight: 700;
+      color: var(--papel-50); margin-bottom: 24px; font-variation-settings: "opsz" 36;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .id-card-title i { color: var(--cemp-500); }
+    .id-row {
+      display: grid; grid-template-columns: 200px 1fr; gap: 12px 24px;
+      align-items: baseline; padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .id-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .id-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--cemp-500); }
+    .id-value { font-size: 14.5px; color: var(--papel-100); line-height: 1.55; }
+    .id-value strong { color: var(--papel-50); font-weight: 600; }
+    .id-value em { font-style: normal; color: var(--papel-200); font-size: 13px; }
+
+    .doc-section { margin-bottom: 44px; }
+    .doc-section h2 { font-family: var(--font-d); font-size: 1.4rem; font-weight: 700; color: var(--papel-50); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(233,122,54,0.18); font-variation-settings: "opsz" 36; }
+    .doc-section p  { font-size: 15px; color: var(--papel-200); line-height: 1.75; margin-bottom: 12px; }
+    .doc-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .doc-section ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--papel-200); line-height: 1.65; }
+    .doc-section ul li::before { content: ''; flex-shrink: 0; margin-top: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--cemp-500); }
+
+    .highlight-box { background: rgba(233,122,54,0.07); border: 1px solid rgba(233,122,54,0.2); border-radius: 12px; padding: 20px 22px; margin: 18px 0; }
+    .highlight-box p { font-size: 14px; color: var(--papel-100); margin: 0; line-height: 1.65; }
+
+    .contact-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 20px 24px; margin-top: 14px; }
+    .contact-card p { font-size: 14px; color: var(--papel-200); margin-bottom: 6px; }
+    .contact-card a { color: var(--cemp-500); text-decoration: none; font-weight: 600; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    footer { background: rgba(46,28,11,0.6); border-top: 1px solid rgba(233,122,54,0.12); padding: 24px; text-align: center; }
+    footer p { font-size: 12px; color: rgba(240,230,194,0.4); }
+    footer a { color: rgba(233,122,54,0.6); text-decoration: none; }
+    footer a:hover { color: var(--cemp-500); }
+
+    @media (max-width: 600px) {
+      .id-row { grid-template-columns: 1fr; gap: 4px; }
+      .id-label { margin-top: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="talavera-strip"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo-ciep.png" alt="Logo CIEP" />
+      <strong>CIEP</strong>
+    </a>
+    <a href="index.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Volver al inicio
+    </a>
+  </div>
+</nav>
+
+<main>
+
+  <span class="doc-eyebrow">Documento legal · 2026</span>
+  <h1 class="doc-title">Aviso Legal</h1>
+  <div class="doc-meta">
+    <strong style="color:var(--papel-50)">CIEP — Observatorio de Investigación en Economía Popular en México</strong><br/>
+    Última actualización: abril de 2026<br/>
+    En cumplimiento con las disposiciones de la legislación mexicana y española en materia de transparencia digital e identificación de responsables de sitios web.
+  </div>
+  <div class="talavera-rule"></div>
+
+
+  <!-- 1. IDENTIFICACIÓN DEL TITULAR -->
+  <div class="id-card">
+    <div class="id-card-title"><i class="fas fa-id-badge"></i> Identificación del Titular</div>
+
+    <div class="id-row">
+      <div class="id-label">Nombre completo</div>
+      <div class="id-value"><strong>Ricardo Jesús Mayorga Coronel</strong></div>
+    </div>
+    <div class="id-row">
+      <div class="id-label">RFC</div>
+      <div class="id-value"><strong>MACR9901144SA</strong></div>
+    </div>
+    <div class="id-row">
+      <div class="id-label">Rol</div>
+      <div class="id-value">Director fundador e investigador principal del Observatorio de Investigación en Economía Popular en México (CIEP)</div>
+    </div>
+    <div class="id-row">
+      <div class="id-label">Formación académica</div>
+      <div class="id-value">
+        <strong>Licenciado en Psicología</strong> — Universidad Nacional Autónoma de México (UNAM)<br/>
+        <em>Cédula Profesional: 14045896</em>
+      </div>
+    </div>
+    <div class="id-row">
+      <div class="id-label">Formación complementaria</div>
+      <div class="id-value">
+        Diplomado en Recursos Humanos — UNAM<br/>
+        Especialización en Intervención Socio-Ambiental — Universidad de Barcelona (UB)<br/>
+        Maestría en Intervención Psicosocial — Universidad de Barcelona (UB) <em>· en curso</em>
+      </div>
+    </div>
+    <div class="id-row">
+      <div class="id-label">Correo de contacto</div>
+      <div class="id-value"><a href="mailto:ciep_mex@outlook.com" style="color:var(--cemp-500);text-decoration:none;font-weight:600">ciep_mex@outlook.com</a></div>
+    </div>
+    <div class="id-row">
+      <div class="id-label">Ámbito de operación</div>
+      <div class="id-value">México y España</div>
+    </div>
+  </div>
+
+
+  <!-- 2. OBJETO DEL SITIO -->
+  <div class="doc-section">
+    <h2>2. Objeto y naturaleza del sitio web</h2>
+    <p>El presente sitio web es de titularidad del <strong style="color:var(--papel-50)">Observatorio de Investigación en Economía Popular en México (CIEP)</strong>, plataforma de difusión académica y científica que tiene por objeto:</p>
+    <ul>
+      <li>Difundir resultados de investigación sobre las condiciones laborales y el bienestar de los trabajadores de la economía popular en México</li>
+      <li>Informar al público sobre el Primer Estudio Nacional sobre Bienestar Laboral en México, actualmente en curso</li>
+      <li>Publicar artículos, ensayos y documentos de trabajo de carácter científico</li>
+      <li>Promover la participación ciudadana en el proceso de recolección de datos mediante encuestas anónimas y voluntarias</li>
+    </ul>
+    <div class="highlight-box">
+      <p>El sitio tiene carácter <strong>exclusivamente académico y sin fines de lucro</strong>. No realiza actividades comerciales, no vende productos ni servicios, y no genera ingresos económicos directos de su operación.</p>
+    </div>
+  </div>
+
+
+  <!-- 3. PROPIEDAD INTELECTUAL -->
+  <div class="doc-section">
+    <h2>3. Propiedad intelectual y derechos de autor</h2>
+    <p>Todos los contenidos publicados en este sitio web — incluyendo textos, gráficos, logotipos, diseño visual, estructura de navegación y datos de investigación — son propiedad intelectual del CIEP y de su titular, Ricardo Jesús Mayorga Coronel, o se utilizan bajo los términos de licencias de uso autorizadas.</p>
+    <p>Queda expresamente prohibida la reproducción total o parcial de los contenidos con fines comerciales sin autorización previa y por escrito del titular. La reproducción con fines académicos, educativos o de divulgación científica es permitida, siempre que se cite la fuente de forma adecuada: <em>«CIEP — Observatorio de Investigación en Economía Popular en México, [año]»</em>.</p>
+  </div>
+
+
+  <!-- 4. RESPONSABILIDAD -->
+  <div class="doc-section">
+    <h2>4. Limitación de responsabilidad</h2>
+    <p>El CIEP y su titular no se responsabilizan por:</p>
+    <ul>
+      <li>Interrupciones o fallos técnicos en el acceso al sitio web por causas ajenas al control del titular</li>
+      <li>Los contenidos de sitios web de terceros a los que se enlace desde esta plataforma</li>
+      <li>El uso que los usuarios realicen de los datos publicados en el sitio, siempre que su uso sea contrario a las finalidades declaradas</li>
+    </ul>
+    <p>Los resultados de investigación publicados representan hallazgos académicos sujetos a revisión científica y <strong style="color:var(--papel-50)">no deben interpretarse como asesoramiento legal, médico, financiero ni de ninguna otra naturaleza profesional</strong>.</p>
+  </div>
+
+
+  <!-- 5. LEGISLACIÓN APLICABLE -->
+  <div class="doc-section">
+    <h2>5. Legislación aplicable y jurisdicción</h2>
+    <p>El presente Aviso Legal se rige por la legislación mexicana vigente, en particular:</p>
+    <ul>
+      <li>Ley Federal de Protección de Datos Personales en Posesión de los Particulares</li>
+      <li>Ley Federal del Derecho de Autor</li>
+      <li>Código Civil Federal de México</li>
+    </ul>
+    <p>En la medida en que el titular también opera desde España, resulta de aplicación complementaria el marco normativo europeo en materia de protección de datos (RGPD — Reglamento General de Protección de Datos, UE 2016/679) y la Ley Orgánica de Protección de Datos y Garantía de los Derechos Digitales (LOPDGDD) de España.</p>
+    <p>Para cualquier controversia derivada del uso de este sitio, el titular y el usuario se someten a los tribunales competentes del domicilio del titular en México, con renuncia expresa a cualquier otro fuero que pudiera corresponderles.</p>
+  </div>
+
+
+  <!-- 6. CONTACTO -->
+  <div class="doc-section">
+    <h2>6. Contacto</h2>
+    <p>Para cualquier consulta, reclamación o solicitud relacionada con los términos del presente Aviso Legal, puede dirigirse al titular a través de los siguientes medios:</p>
+    <div class="contact-card">
+      <p><i class="fas fa-envelope" style="color:var(--cemp-500)"></i>&nbsp; <a href="mailto:ciep_mex@outlook.com">ciep_mex@outlook.com</a></p>
+      <p><i class="fab fa-instagram" style="color:var(--cemp-500)"></i>&nbsp; <a href="https://www.instagram.com/mex_ciep" target="_blank" rel="noopener noreferrer" style="color:var(--cemp-500);text-decoration:none">@mex_ciep</a> en Instagram</p>
+      <p><i class="fab fa-facebook-f" style="color:var(--cemp-500)"></i>&nbsp; <a href="https://www.facebook.com/profile.php?id=61572157345570" target="_blank" rel="noopener noreferrer" style="color:var(--cemp-500);text-decoration:none">CIEP en Facebook</a></p>
+      <p style="margin-top:10px;font-size:12.5px;color:rgba(240,230,194,0.45)">Tiempo de respuesta habitual: entre 5 y 15 días hábiles.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 CIEP — Observatorio sobre Estudios de la Economía Popular en México &nbsp;·&nbsp; <a href="index.html">Volver al inicio</a> &nbsp;·&nbsp; <a href="aviso-privacidad.html">Aviso de privacidad</a> &nbsp;·&nbsp; <a href="accesibilidad.html">Accesibilidad</a></p>
+</footer>
+
+</body>
+</html>

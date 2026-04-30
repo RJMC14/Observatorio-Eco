@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aviso de Privacidad — CIEP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --tinta-800: #2A1A0E;
+      --tinta-700: #3D2817;
+      --papel-50:  #FDF8E8;
+      --papel-100: #F8F1D8;
+      --papel-200: #F0E6C2;
+      --cemp-500:  #E97A36;
+      --cemp-600:  #C85F22;
+      --talavera:  #2F6B92;
+      --nopal:     #5F7A4A;
+      --coyoacan:  #B5341E;
+      --maiz:      #C99826;
+      --font-d: 'Fraunces', Georgia, serif;
+      --font-s: 'Source Sans 3', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--tinta-800); color: var(--papel-100); font-family: var(--font-s); -webkit-font-smoothing: antialiased; }
+
+    .talavera-strip {
+      height: 5px;
+      background: repeating-linear-gradient(90deg,
+        var(--talavera) 0px, var(--talavera) 20px,
+        var(--cemp-500) 20px, var(--cemp-500) 40px,
+        var(--coyoacan) 40px, var(--coyoacan) 60px,
+        var(--nopal)    60px, var(--nopal)    80px,
+        var(--maiz)     80px, var(--maiz)    100px);
+    }
+
+    nav {
+      height: 60px; display: flex; align-items: center;
+      background: rgba(30,17,8,0.95); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(233,122,54,0.18);
+      padding: 0 24px;
+    }
+    .nav-inner { max-width: 800px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { width: 34px; height: 34px; object-fit: contain; }
+    .nav-logo strong { font-family: var(--font-d); font-size: 15px; color: var(--papel-50); font-variation-settings: "opsz" 36; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      color: var(--papel-200); text-decoration: none; font-size: 13px; font-weight: 500;
+      transition: color 180ms;
+    }
+    .back-link:hover { color: var(--cemp-500); }
+
+    main { max-width: 800px; margin: 0 auto; padding: 64px 24px 96px; }
+
+    .doc-header { margin-bottom: 48px; }
+    .doc-eyebrow {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--cemp-500); margin-bottom: 12px;
+    }
+    .doc-title {
+      font-family: var(--font-d); font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700; color: var(--papel-50); line-height: 1.1;
+      letter-spacing: -0.02em; margin-bottom: 16px;
+      font-variation-settings: "opsz" 72;
+    }
+    .doc-meta {
+      font-size: 13px; color: var(--papel-200);
+      border-left: 3px solid var(--cemp-500); padding-left: 14px; line-height: 1.6;
+    }
+    .talavera-rule { height: 3px; width: 72px; background: linear-gradient(90deg, var(--talavera), var(--cemp-500)); border-radius: 2px; margin: 24px 0 0; }
+
+    .doc-section { margin-bottom: 44px; }
+    .doc-section h2 {
+      font-family: var(--font-d); font-size: 1.4rem; font-weight: 700;
+      color: var(--papel-50); margin-bottom: 14px; padding-bottom: 10px;
+      border-bottom: 1px solid rgba(233,122,54,0.18);
+      font-variation-settings: "opsz" 36;
+    }
+    .doc-section h3 { font-size: 1rem; font-weight: 700; color: var(--cemp-500); margin: 18px 0 8px; }
+    .doc-section p  { font-size: 15px; color: var(--papel-200); line-height: 1.75; margin-bottom: 12px; }
+    .doc-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .doc-section ul li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14.5px; color: var(--papel-200); line-height: 1.65;
+    }
+    .doc-section ul li::before {
+      content: ''; flex-shrink: 0; margin-top: 6px;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--cemp-500);
+    }
+
+    .highlight-box {
+      background: rgba(233,122,54,0.08); border: 1px solid rgba(233,122,54,0.22);
+      border-radius: 12px; padding: 20px 22px; margin: 18px 0;
+    }
+    .highlight-box p { font-size: 14px; color: var(--papel-100); margin: 0; }
+    .highlight-box strong { color: var(--cemp-500); }
+
+    .contact-card {
+      background: var(--tinta-700); border: 1px solid rgba(233,122,54,0.18);
+      border-radius: 14px; padding: 24px 28px; margin-top: 16px;
+    }
+    .contact-card p { font-size: 14px; color: var(--papel-200); margin-bottom: 6px; }
+    .contact-card a { color: var(--cemp-500); text-decoration: none; font-weight: 600; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    footer { background: rgba(30,17,8,0.6); border-top: 1px solid rgba(233,122,54,0.12); padding: 24px; text-align: center; }
+    footer p { font-size: 12px; color: rgba(240,230,194,0.4); }
+    footer a { color: rgba(233,122,54,0.6); text-decoration: none; }
+    footer a:hover { color: var(--cemp-500); }
+  </style>
+</head>
+<body>
+
+<div class="talavera-strip"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo-ciep.png" alt="Logo CIEP" />
+      <strong>CIEP</strong>
+    </a>
+    <a href="index.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Volver al inicio
+    </a>
+  </div>
+</nav>
+
+<main>
+  <div class="doc-header">
+    <span class="doc-eyebrow">Documento legal · 2026</span>
+    <h1 class="doc-title">Aviso de Privacidad</h1>
+    <div class="doc-meta">
+      <strong style="color:var(--papel-50)">CIEP — Centro de Investigación en Economía Popular en México</strong><br/>
+      Última actualización: abril de 2026<br/>
+      Vigente a partir de su publicación en este sitio web
+    </div>
+    <div class="talavera-rule"></div>
+  </div>
+
+  <div class="doc-section">
+    <h2>1. Responsable del tratamiento de datos</h2>
+    <p>El <strong style="color:var(--papel-50)">Centro de Investigación en Economía Popular en México (CIEP)</strong>, también conocido como Observatorio sobre Estudios de la Economía Popular en México, es el responsable del tratamiento de los datos personales que usted nos proporcione, con domicilio y operación en México y España.</p>
+    <div class="highlight-box">
+      <p>Para cualquier asunto relacionado con el tratamiento de sus datos personales, puede contactarnos en: <strong>ciep_mex@outlook.com</strong></p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>2. Datos personales que recopilamos</h2>
+    <p>En el marco del Primer Estudio Nacional sobre Bienestar Laboral en México y en la operación general de este sitio web, el CIEP puede recopilar los siguientes datos:</p>
+    <h3>A través de la encuesta de investigación:</h3>
+    <ul>
+      <li>Datos sociodemográficos generales (sexo, rango de edad, estado o región de residencia)</li>
+      <li>Información sobre condiciones y sector laboral</li>
+      <li>Percepciones sobre bienestar económico y emocional</li>
+      <li>Acceso a prestaciones y derechos laborales</li>
+    </ul>
+    <h3>A través del sitio web:</h3>
+    <ul>
+      <li>Dirección de correo electrónico (solo cuando usted nos escribe voluntariamente)</li>
+      <li>Datos de navegación de carácter técnico y no personal (tipo de dispositivo, navegador)</li>
+    </ul>
+    <p>La encuesta <strong style="color:var(--papel-50)">no solicita nombre completo, número de teléfono, domicilio exacto ni ningún dato que permita identificarle directamente.</strong> Las respuestas son anónimas por diseño.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>3. Finalidades del tratamiento</h2>
+    <p>Sus datos son utilizados exclusivamente para:</p>
+    <ul>
+      <li>Desarrollar investigación académica sobre la economía popular y el bienestar laboral en México</li>
+      <li>Generar estadísticas, análisis y publicaciones de carácter científico</li>
+      <li>Elaborar recomendaciones de política pública basadas en evidencia</li>
+      <li>Responder consultas o solicitudes de colaboración institucional</li>
+    </ul>
+    <div class="highlight-box">
+      <p><strong>Compromiso expreso:</strong> Los datos recopilados <strong>no serán vendidos, cedidos ni utilizados con fines comerciales</strong> bajo ninguna circunstancia. Su uso es estrictamente académico y de interés público.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>4. Base legal del tratamiento</h2>
+    <p>El tratamiento de sus datos se fundamenta en:</p>
+    <ul>
+      <li><strong style="color:var(--papel-50)">Consentimiento voluntario:</strong> al participar en la encuesta o contactarnos, usted otorga su consentimiento informado para el tratamiento de sus datos con las finalidades descritas.</li>
+      <li><strong style="color:var(--papel-50)">Interés legítimo académico:</strong> la investigación científica sobre condiciones laborales constituye una actividad de interés público reconocida por la legislación mexicana.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>5. Confidencialidad y seguridad</h2>
+    <p>El CIEP adopta las siguientes medidas para proteger sus datos:</p>
+    <ul>
+      <li>Las respuestas de la encuesta se almacenan en plataformas con cifrado de datos (Microsoft Forms)</li>
+      <li>Los datos individuales no son publicados; solo se difunden resultados agregados y estadísticos</li>
+      <li>El acceso a la base de datos está restringido exclusivamente al equipo de investigación</li>
+      <li>Los datos se conservan únicamente durante el tiempo necesario para los fines de la investigación</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>6. Sus derechos (ARCO)</h2>
+    <p>De conformidad con la <em>Ley Federal de Protección de Datos Personales en Posesión de los Particulares</em> (México), usted tiene los siguientes derechos:</p>
+    <ul>
+      <li><strong style="color:var(--papel-50)">Acceso:</strong> conocer qué datos personales suyos tenemos y cómo los usamos</li>
+      <li><strong style="color:var(--papel-50)">Rectificación:</strong> solicitar que corrijamos datos inexactos o incompletos</li>
+      <li><strong style="color:var(--papel-50)">Cancelación:</strong> pedir que eliminemos sus datos cuando ya no sean necesarios</li>
+      <li><strong style="color:var(--papel-50)">Oposición:</strong> oponerse al tratamiento de sus datos en casos específicos</li>
+    </ul>
+    <p>Dado que la encuesta es anónima, para ejercer sus derechos deberá proporcionarnos información suficiente que permita identificar su participación.</p>
+    <div class="contact-card">
+      <p>Para ejercer sus derechos ARCO o para cualquier consulta sobre privacidad, escríbanos a:</p>
+      <p><i class="fas fa-envelope" style="color:var(--cemp-500)"></i>&nbsp; <a href="mailto:ciep_mex@outlook.com">ciep_mex@outlook.com</a></p>
+      <p style="margin-top:8px;font-size:13px;color:rgba(240,230,194,0.5)">Responderemos en un plazo máximo de 20 días hábiles.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>7. Cookies y tecnologías de rastreo</h2>
+    <p>Este sitio web <strong style="color:var(--papel-50)">no utiliza cookies de rastreo ni herramientas de analítica de terceros</strong> (como Google Analytics). No se instala ningún identificador persistente en su dispositivo sin su conocimiento.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>8. Transferencias de datos</h2>
+    <p>Sus datos personales <strong style="color:var(--papel-50)">no son transferidos a terceros</strong> con fines comerciales. En el contexto de la investigación, los resultados podrán compartirse con instituciones académicas colaboradoras, siempre de forma anonimizada y agregada, nunca a nivel individual.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>9. Modificaciones a este aviso</h2>
+    <p>El CIEP se reserva el derecho de actualizar este Aviso de Privacidad para reflejar cambios en nuestra práctica de datos o en la legislación aplicable. Cualquier modificación será publicada en esta página con la fecha de actualización correspondiente. Le recomendamos revisarlo periódicamente.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 CIEP — Observatorio sobre Estudios de la Economía Popular en México · <a href="index.html">Volver al inicio</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Declaración de Accesibilidad — CIEP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --tinta-800: #2A1A0E;
+      --tinta-700: #3D2817;
+      --papel-50:  #FDF8E8;
+      --papel-100: #F8F1D8;
+      --papel-200: #F0E6C2;
+      --cemp-500:  #E97A36;
+      --cemp-600:  #C85F22;
+      --talavera:  #2F6B92;
+      --nopal:     #5F7A4A;
+      --coyoacan:  #B5341E;
+      --maiz:      #C99826;
+      --font-d: 'Fraunces', Georgia, serif;
+      --font-s: 'Source Sans 3', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--tinta-800); color: var(--papel-100); font-family: var(--font-s); -webkit-font-smoothing: antialiased; }
+
+    .talavera-strip {
+      height: 5px;
+      background: repeating-linear-gradient(90deg,
+        var(--talavera) 0px, var(--talavera) 20px,
+        var(--cemp-500) 20px, var(--cemp-500) 40px,
+        var(--coyoacan) 40px, var(--coyoacan) 60px,
+        var(--nopal)    60px, var(--nopal)    80px,
+        var(--maiz)     80px, var(--maiz)    100px);
+    }
+
+    nav {
+      height: 60px; display: flex; align-items: center;
+      background: rgba(30,17,8,0.95); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(233,122,54,0.18); padding: 0 24px;
+    }
+    .nav-inner { max-width: 800px; margin: 0 auto; width: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { width: 34px; height: 34px; object-fit: contain; }
+    .nav-logo strong { font-family: var(--font-d); font-size: 15px; color: var(--papel-50); font-variation-settings: "opsz" 36; }
+    .back-link { display: inline-flex; align-items: center; gap: 7px; color: var(--papel-200); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 180ms; }
+    .back-link:hover { color: var(--cemp-500); }
+
+    main { max-width: 800px; margin: 0 auto; padding: 64px 24px 96px; }
+
+    .doc-header { margin-bottom: 48px; }
+    .doc-eyebrow { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--cemp-500); margin-bottom: 12px; }
+    .doc-title { font-family: var(--font-d); font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--papel-50); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px; font-variation-settings: "opsz" 72; }
+    .doc-meta { font-size: 13px; color: var(--papel-200); border-left: 3px solid var(--cemp-500); padding-left: 14px; line-height: 1.6; }
+    .talavera-rule { height: 3px; width: 72px; background: linear-gradient(90deg, var(--talavera), var(--cemp-500)); border-radius: 2px; margin: 24px 0 0; }
+
+    .doc-section { margin-bottom: 44px; }
+    .doc-section h2 { font-family: var(--font-d); font-size: 1.4rem; font-weight: 700; color: var(--papel-50); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(233,122,54,0.18); font-variation-settings: "opsz" 36; }
+    .doc-section h3 { font-size: 1rem; font-weight: 700; color: var(--cemp-500); margin: 18px 0 8px; }
+    .doc-section p  { font-size: 15px; color: var(--papel-200); line-height: 1.75; margin-bottom: 12px; }
+    .doc-section ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .doc-section ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--papel-200); line-height: 1.65; }
+    .doc-section ul li::before { content: ''; flex-shrink: 0; margin-top: 6px; width: 7px; height: 7px; border-radius: 50%; background: var(--cemp-500); }
+
+    .highlight-box { background: rgba(233,122,54,0.08); border: 1px solid rgba(233,122,54,0.22); border-radius: 12px; padding: 20px 22px; margin: 18px 0; }
+    .highlight-box p { font-size: 14px; color: var(--papel-100); margin: 0; }
+    .highlight-box strong { color: var(--cemp-500); }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 18px 0; }
+    .feature-card { background: var(--tinta-700); border: 1px solid rgba(233,122,54,0.15); border-radius: 12px; padding: 18px 20px; }
+    .feature-card i { font-size: 22px; color: var(--cemp-500); margin-bottom: 10px; display: block; }
+    .feature-card h4 { font-size: 14px; font-weight: 700; color: var(--papel-50); margin-bottom: 6px; }
+    .feature-card p { font-size: 12.5px; color: var(--papel-200); line-height: 1.6; margin: 0; }
+
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 6px 14px; border-radius: 999px; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .status-ok { background: rgba(95,122,74,0.2); border: 1px solid rgba(95,122,74,0.4); color: #9CB48A; }
+
+    .contact-card { background: var(--tinta-700); border: 1px solid rgba(233,122,54,0.18); border-radius: 14px; padding: 24px 28px; margin-top: 16px; }
+    .contact-card p { font-size: 14px; color: var(--papel-200); margin-bottom: 6px; }
+    .contact-card a { color: var(--cemp-500); text-decoration: none; font-weight: 600; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    footer { background: rgba(30,17,8,0.6); border-top: 1px solid rgba(233,122,54,0.12); padding: 24px; text-align: center; }
+    footer p { font-size: 12px; color: rgba(240,230,194,0.4); }
+    footer a { color: rgba(233,122,54,0.6); text-decoration: none; }
+    footer a:hover { color: var(--cemp-500); }
+  </style>
+</head>
+<body>
+
+<div class="talavera-strip"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo-ciep.png" alt="Logo CIEP" />
+      <strong>CIEP</strong>
+    </a>
+    <a href="index.html" class="back-link">
+      <i class="fas fa-arrow-left"></i> Volver al inicio
+    </a>
+  </div>
+</nav>
+
+<main>
+  <div class="doc-header">
+    <span class="doc-eyebrow">Documento legal · 2026</span>
+    <h1 class="doc-title">Declaración de Accesibilidad</h1>
+    <div class="doc-meta">
+      <strong style="color:var(--papel-50)">CIEP — Centro de Investigación en Economía Popular en México</strong><br/>
+      Última actualización: abril de 2026<br/>
+      Aplicable al sitio web: <em>Observatorio sobre Estudios de la Economía Popular en México</em>
+    </div>
+    <div style="margin-top:16px">
+      <span class="status-badge status-ok"><i class="fas fa-check-circle"></i> Compromiso activo con la accesibilidad</span>
+    </div>
+    <div class="talavera-rule"></div>
+  </div>
+
+  <div class="doc-section">
+    <h2>1. Nuestro compromiso</h2>
+    <p>El <strong style="color:var(--papel-50)">CIEP</strong> está comprometido con garantizar que su sitio web sea accesible para todas las personas, incluidas aquellas con discapacidades visuales, auditivas, motoras o cognitivas. Consideramos que el acceso a la información sobre la economía popular debe estar disponible para todas y todos, sin barreras.</p>
+    <p>Nos esforzamos por cumplir con las <strong style="color:var(--papel-50)">Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1</strong>, nivel AA, desarrolladas por el W3C.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>2. Medidas de accesibilidad implementadas</h2>
+    <p>Este sitio web incorpora las siguientes características para mejorar la accesibilidad:</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <i class="fas fa-font"></i>
+        <h4>Tipografía legible</h4>
+        <p>Tamaños de fuente mínimo de 13px con escala modular. Alto contraste entre texto y fondo.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-adjust"></i>
+        <h4>Contraste de color</h4>
+        <p>La relación de contraste entre texto y fondo supera el umbral WCAG AA (4.5:1) en el cuerpo del texto.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-keyboard"></i>
+        <h4>Navegación por teclado</h4>
+        <p>Todos los elementos interactivos son accesibles mediante teclado (Tab, Enter, teclas de flecha).</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-image"></i>
+        <h4>Texto alternativo</h4>
+        <p>Las imágenes incluyen atributos <code style="background:rgba(255,255,255,0.07);padding:1px 5px;border-radius:4px">alt</code> descriptivos para lectores de pantalla.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-code"></i>
+        <h4>HTML semántico</h4>
+        <p>Uso de etiquetas semánticas (<code style="background:rgba(255,255,255,0.07);padding:1px 5px;border-radius:4px">nav</code>, <code style="background:rgba(255,255,255,0.07);padding:1px 5px;border-radius:4px">main</code>, <code style="background:rgba(255,255,255,0.07);padding:1px 5px;border-radius:4px">section</code>, <code style="background:rgba(255,255,255,0.07);padding:1px 5px;border-radius:4px">footer</code>) para facilitar la navegación con tecnologías de apoyo.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-mobile-alt"></i>
+        <h4>Diseño responsivo</h4>
+        <p>El sitio se adapta a dispositivos móviles, tabletas y computadoras de escritorio sin pérdida de funcionalidad.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-language"></i>
+        <h4>Idioma declarado</h4>
+        <p>El atributo <code style="background:rgba(255,255,255,0.07);padding:1px 5px;border-radius:4px">lang="es"</code> está presente en todas las páginas para correcta interpretación por lectores de pantalla.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-mouse-pointer"></i>
+        <h4>Áreas de clic amplias</h4>
+        <p>Los botones y enlaces tienen áreas de interacción suficientemente grandes para facilitar su uso en dispositivos táctiles.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>3. Limitaciones conocidas</h2>
+    <p>A pesar de nuestros esfuerzos, puede haber algunas áreas del sitio que aún no alcancen el nivel óptimo de accesibilidad:</p>
+    <ul>
+      <li>Los documentos descargables en formato <strong style="color:var(--papel-50)">.docx</strong> pueden no ser completamente accesibles para todos los lectores de pantalla</li>
+      <li>El formulario de encuesta externo (Microsoft Forms) está sujeto a la política de accesibilidad de dicha plataforma, sobre la que el CIEP no tiene control directo</li>
+      <li>Algunos contenidos visuales complejos pueden no tener alternativas textuales completas en esta primera versión del sitio</li>
+    </ul>
+    <div class="highlight-box">
+      <p>Estamos trabajando continuamente para mejorar estas limitaciones. Si encuentra alguna barrera de accesibilidad, <strong>su reporte nos ayuda directamente a mejorar.</strong></p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>4. Tecnologías de apoyo compatibles</h2>
+    <p>Este sitio ha sido diseñado para ser compatible con las siguientes tecnologías de apoyo:</p>
+    <ul>
+      <li>Lectores de pantalla: NVDA, JAWS, VoiceOver (macOS/iOS), TalkBack (Android)</li>
+      <li>Navegación por teclado en todos los navegadores modernos (Chrome, Firefox, Safari, Edge)</li>
+      <li>Zoom de navegador hasta el 200% sin pérdida de contenido ni funcionalidad</li>
+      <li>Modo de alto contraste del sistema operativo</li>
+    </ul>
+  </div>
+
+  <div class="doc-section">
+    <h2>5. Estándar de referencia</h2>
+    <p>Nos guiamos por las <strong style="color:var(--papel-50)">Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1</strong>, nivel de conformidad <strong style="color:var(--papel-50)">AA</strong>, publicadas por el World Wide Web Consortium (W3C).</p>
+    <p>En el contexto mexicano, nos orientamos también por la <em>Norma Mexicana NMX-I-271-NYCE-2022</em> sobre accesibilidad en tecnologías de la información, y las disposiciones aplicables de la <em>Ley General para la Inclusión de las Personas con Discapacidad</em>.</p>
+  </div>
+
+  <div class="doc-section">
+    <h2>6. Reporte de problemas y contacto</h2>
+    <p>Si encuentra alguna barrera de accesibilidad en este sitio web, o si necesita información en un formato alternativo, le invitamos a comunicarse con nosotros. Valoramos cada reporte como una oportunidad de mejora.</p>
+    <div class="contact-card">
+      <p><i class="fas fa-envelope" style="color:var(--cemp-500)"></i>&nbsp; Escríbanos a: <a href="mailto:ciep_mex@outlook.com">ciep_mex@outlook.com</a></p>
+      <p style="margin-top:8px">Por favor, incluya en su mensaje:</p>
+      <ul style="list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:5px">
+        <li style="display:flex;gap:8px;font-size:13px;color:var(--papel-200)"><span style="color:var(--cemp-500)">›</span> La URL de la página donde encontró el problema</li>
+        <li style="display:flex;gap:8px;font-size:13px;color:var(--papel-200)"><span style="color:var(--cemp-500)">›</span> Una descripción del problema de accesibilidad</li>
+        <li style="display:flex;gap:8px;font-size:13px;color:var(--papel-200)"><span style="color:var(--cemp-500)">›</span> El navegador y dispositivo que utiliza</li>
+      </ul>
+      <p style="margin-top:12px;font-size:13px;color:rgba(240,230,194,0.5)">Responderemos en un plazo máximo de 15 días hábiles.</p>
+    </div>
+  </div>
+
+  <div class="doc-section">
+    <h2>7. Actualización de esta declaración</h2>
+    <p>Esta Declaración de Accesibilidad se revisará y actualizará periódicamente, conforme avance el desarrollo del sitio y se implementen mejoras. La fecha de última actualización aparece en el encabezado de este documento.</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 CIEP — Observatorio sobre Estudios de la Economía Popular en México · <a href="index.html">Volver al inicio</a></p>
+</footer>
+
+</body>
+</html>
